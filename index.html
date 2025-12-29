@@ -90,6 +90,83 @@
         transform: translateY(2px);
       }
 
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 
+          0 4px 6px rgba(0, 0, 0, 0.07),
+          0 10px 20px rgba(0, 0, 0, 0.1),
+          0 0 0 1px rgba(0, 0, 0, 0.05);
+        list-style: none;
+        margin: 0;
+        padding: 0.5rem 0;
+        min-width: 240px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+        z-index: 1000;
+        margin-top: 0.5rem;
+      }
+
+      .nav-menu li:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown-menu li {
+        margin: 0;
+      }
+
+      .dropdown-menu a {
+        display: block;
+        padding: 0.75rem 1.25rem;
+        color: #1e293b;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .dropdown-menu a:hover {
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.03));
+        color: #3b82f6;
+        border-left-color: #3b82f6;
+        padding-left: 1.5rem;
+      }
+
+      @media (max-width: 900px) {
+        .dropdown-menu {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          border-radius: 0;
+          margin-top: 0;
+          padding: 0;
+          background: transparent;
+          min-width: auto;
+        }
+
+        .dropdown-menu a {
+          padding: 0.5rem 0 0.5rem 1.5rem;
+          border-left: none;
+          font-size: 0.85rem;
+        }
+
+        .dropdown-menu a:hover {
+          background: transparent;
+          padding-left: 1.5rem;
+          border-left: none;
+        }
+      }
+
       .nav-cta {
         display: flex;
         align-items: center;
@@ -117,10 +194,28 @@
         clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
       }
 
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        border: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
       .btn-gradient {
-        background: linear-gradient(90deg, #f59e0b, #0ea5e9);
+        background: linear-gradient(90deg, #fbbf24, #0ea5e9);
         color: #ffffff;
         box-shadow: 0 0.75rem 1.5rem rgba(14, 165, 233, 0.35);
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 1rem 2rem rgba(14, 165, 233, 0.45);
       }
 
       header,
@@ -1597,38 +1692,49 @@
         margin-left: calc(-50vw + 50%);
         margin-right: calc(-50vw + 50%);
         width: 100vw;
-        padding: 5rem clamp(1.5rem, 4vw, 3.5rem) 4rem;
+        padding: 6rem clamp(1.5rem, 4vw, 3.5rem) 5rem;
         border-radius: 0;
         background: 
-          radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.4) 0%, transparent 50%),
-          radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.35) 0%, transparent 50%),
-          radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 70%),
+          radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.5) 0%, transparent 55%),
+          radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.45) 0%, transparent 55%),
+          radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.2) 0%, transparent 70%),
+          radial-gradient(circle at 10% 80%, rgba(236, 72, 153, 0.3) 0%, transparent 60%),
           linear-gradient(135deg, #0a0f1a 0%, #1a1f3a 25%, #0f172a 50%, #1a1f3a 75%, #0a0f1a 100%);
         color: #e5e7eb;
         position: relative;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        gap: 3.5rem;
+        gap: 4rem;
         box-shadow: 
           0 35px 90px rgba(15, 23, 42, 0.9),
           inset 0 1px 0 rgba(255, 255, 255, 0.05);
       }
 
       .benefits-combined-title {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(2.25rem, 5.5vw, 3.5rem);
         font-weight: 900;
-        background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 30%, #c7d2fe 60%, #fbbf24 90%, #ffffff 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin: 0 0 1.5rem 0;
-        padding-bottom: 2rem;
+        margin: 0 0 2rem 0;
+        padding-bottom: 2.5rem;
         text-align: center;
         position: relative;
         z-index: 1;
-        letter-spacing: -0.02em;
-        text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+        letter-spacing: -0.03em;
+        text-shadow: 0 0 60px rgba(255, 255, 255, 0.15);
+        animation: titleGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes titleGlow {
+        0%, 100% {
+          filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+        }
+        50% {
+          filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
+        }
       }
 
       .benefits-combined-title::after {
@@ -1637,11 +1743,25 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 120px;
-        height: 4px;
-        background: linear-gradient(90deg, transparent, #f97316, #3b82f6, #f97316, transparent);
-        border-radius: 2px;
-        box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+        width: 140px;
+        height: 5px;
+        background: linear-gradient(90deg, transparent, #f97316, #3b82f6, #8b5cf6, #ec4899, #f97316, transparent);
+        border-radius: 3px;
+        box-shadow: 
+          0 0 25px rgba(249, 115, 22, 0.6),
+          0 0 40px rgba(59, 130, 246, 0.4);
+        animation: underlinePulse 2s ease-in-out infinite;
+      }
+
+      @keyframes underlinePulse {
+        0%, 100% {
+          width: 140px;
+          opacity: 1;
+        }
+        50% {
+          width: 160px;
+          opacity: 0.8;
+        }
       }
 
       .benefits-combined::before {
@@ -1692,10 +1812,13 @@
       .benefits-hero {
         display: grid;
         grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        gap: 4rem;
+        gap: 5rem;
         align-items: center;
         position: relative;
         z-index: 1;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem 0;
       }
 
       .benefits-hero-visual {
@@ -1708,25 +1831,38 @@
 
       .benefits-hero-image {
         width: 100%;
-        max-width: 550px;
+        max-width: 600px;
         height: auto;
         object-fit: contain;
-        border-radius: 24px;
+        border-radius: 32px;
         box-shadow: 
-          0 25px 70px rgba(0, 0, 0, 0.4),
-          0 0 0 1px rgba(255, 255, 255, 0.1),
-          0 0 60px rgba(59, 130, 246, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+          0 30px 80px rgba(0, 0, 0, 0.5),
+          0 0 0 2px rgba(255, 255, 255, 0.15),
+          0 0 80px rgba(59, 130, 246, 0.4),
+          0 0 120px rgba(139, 92, 246, 0.2);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         z-index: 2;
+        animation: imageFloat 6s ease-in-out infinite;
+      }
+
+      @keyframes imageFloat {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
       }
 
       .benefits-hero-image:hover {
-        transform: translateY(-5px) scale(1.02);
+        transform: translateY(-8px) scale(1.03);
         box-shadow: 
-          0 30px 80px rgba(0, 0, 0, 0.5),
-          0 0 0 1px rgba(255, 255, 255, 0.15),
-          0 0 80px rgba(59, 130, 246, 0.3);
+          0 40px 100px rgba(0, 0, 0, 0.6),
+          0 0 0 3px rgba(255, 255, 255, 0.2),
+          0 0 100px rgba(59, 130, 246, 0.5),
+          0 0 150px rgba(139, 92, 246, 0.3);
+        animation: none;
       }
 
       .benefits-hero-blob {
@@ -1995,15 +2131,16 @@
       }
 
       .benefits-hero-title {
-        font-size: clamp(2rem, 3.5vw, 2.5rem);
+        font-size: clamp(2.1rem, 4vw, 2.8rem);
         font-weight: 800;
-        background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #fbbf24 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin: 0 0 1.25rem;
+        margin: 0 0 1.5rem;
         line-height: 1.3;
         letter-spacing: -0.02em;
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
       }
 
       .benefits-hero-lead {
@@ -2026,17 +2163,37 @@
         align-items: flex-start;
         gap: 0.75rem;
         color: #e2e8f0;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        transition: all 0.3s ease;
+        padding: 1.25rem 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .benefits-hero-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(180deg, #3b82f6, #22c55e, #f97316, #ec4899);
+        opacity: 0;
+        transition: opacity 0.4s ease;
       }
 
       .benefits-hero-list li:hover {
-        background: rgba(255, 255, 255, 0.06);
-        border-color: rgba(255, 255, 255, 0.15);
-        transform: translateX(5px);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateX(8px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .benefits-hero-list li:hover::before {
+        opacity: 1;
       }
 
       .benefits-hero-list strong {
@@ -2045,17 +2202,49 @@
       }
 
       .benefits-hero-bullet-icon {
-        width: 22px;
-        height: 22px;
+        width: 28px;
+        height: 28px;
         border-radius: 999px;
-        border: 1px solid rgba(96, 165, 250, 0.8);
+        background: linear-gradient(135deg, #22c55e, #10b981, #059669);
+        color: #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.95rem;
-        color: #bfdbfe;
+        font-size: 0.85rem;
+        font-weight: 700;
         margin-top: 0.1rem;
         flex-shrink: 0;
+        box-shadow: 
+          0 6px 20px rgba(34, 197, 94, 0.5),
+          0 0 0 2px rgba(34, 197, 94, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        border: none;
+      }
+
+      .benefits-hero-bullet-icon::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #22c55e, #10b981);
+        opacity: 0;
+        z-index: -1;
+        filter: blur(8px);
+        transition: opacity 0.3s ease;
+      }
+
+      .benefits-hero-list li:hover .benefits-hero-bullet-icon {
+        transform: scale(1.15) rotate(5deg);
+        box-shadow: 
+          0 8px 25px rgba(34, 197, 94, 0.6),
+          0 0 0 3px rgba(34, 197, 94, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+
+      .benefits-hero-list li:hover .benefits-hero-bullet-icon::before {
+        opacity: 0.6;
       }
 
       .benefits-hero-cta {
@@ -2066,19 +2255,32 @@
       }
 
       .benefits-hero-cta .btn {
-        background: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+        background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+        background-size: 200% 200%;
         color: #ffffff;
         border: none;
-        padding: 1rem 2.25rem;
-        border-radius: 12px;
+        padding: 1.15rem 2.5rem;
+        border-radius: 999px;
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 1.05rem;
         box-shadow: 
-          0 15px 35px rgba(248, 113, 22, 0.5),
-          0 0 0 0 rgba(248, 113, 22, 0);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          0 10px 30px rgba(248, 113, 22, 0.5),
+          0 0 0 0 rgba(248, 113, 22, 0),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
+        animation: gradientShift 3s ease infinite;
+        cursor: pointer;
+      }
+
+      @keyframes gradientShift {
+        0%, 100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
       }
 
       .benefits-hero-cta .btn::before {
@@ -2092,15 +2294,39 @@
         transition: left 0.5s ease;
       }
 
+      .benefits-hero-cta .btn::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
       .benefits-hero-cta .btn:hover::before {
         left: 100%;
       }
 
+      .benefits-hero-cta .btn:hover::after {
+        width: 300px;
+        height: 300px;
+      }
+
       .benefits-hero-cta .btn:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px) scale(1.02);
         box-shadow: 
-          0 20px 45px rgba(248, 113, 22, 0.6),
-          0 0 0 4px rgba(248, 113, 22, 0.1);
+          0 15px 40px rgba(248, 113, 22, 0.6),
+          0 0 0 4px rgba(248, 113, 22, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+
+      .benefits-hero-cta .btn span {
+        position: relative;
+        z-index: 1;
       }
 
       .benefits-hero-note {
@@ -2117,37 +2343,69 @@
 
       .benefits-strip-title {
         text-align: center;
-        font-size: 1.25rem;
-        margin: 0 0 2rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 0 0 3rem;
         color: #e5e7eb;
+        letter-spacing: 0.02em;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
 
       .benefits-circle-grid {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1.5rem;
+        gap: 2rem;
         justify-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
       }
 
       .benefit-circle {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 1.25rem;
         text-align: center;
-        padding: 1.5rem;
-        border-radius: 20px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 2rem 1.5rem;
+        border-radius: 24px;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .benefit-circle::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease;
       }
 
       .benefit-circle:hover {
-        transform: translateY(-8px);
+        transform: translateY(-12px) scale(1.02);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 
+          0 20px 60px rgba(0, 0, 0, 0.3),
+          0 0 40px rgba(59, 130, 246, 0.2);
+      }
+
+      .benefit-circle:hover::before {
+        opacity: 1;
       }
 
       .benefit-circle-icon {
-        width: 120px;
-        height: 120px;
+        width: 130px;
+        height: 130px;
         border-radius: 999px;
         display: flex;
         align-items: center;
@@ -2156,13 +2414,34 @@
         font-size: 2.5rem;
         position: relative;
         overflow: visible;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 3px solid #3b82f6;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 4px solid rgba(255, 255, 255, 0.2);
         box-shadow: 
-          0 0 0 1px rgba(59, 130, 246, 0.3),
-          0 0 20px rgba(59, 130, 246, 0.5),
-          0 0 40px rgba(59, 130, 246, 0.3),
-          0 20px 50px rgba(0, 0, 0, 0.4);
+          0 0 0 2px rgba(59, 130, 246, 0.4),
+          0 0 30px rgba(59, 130, 246, 0.6),
+          0 0 60px rgba(59, 130, 246, 0.4),
+          0 25px 60px rgba(0, 0, 0, 0.5),
+          inset 0 2px 10px rgba(255, 255, 255, 0.2);
+        animation: iconPulse 3s ease-in-out infinite;
+      }
+
+      @keyframes iconPulse {
+        0%, 100% {
+          box-shadow: 
+            0 0 0 2px rgba(59, 130, 246, 0.4),
+            0 0 30px rgba(59, 130, 246, 0.6),
+            0 0 60px rgba(59, 130, 246, 0.4),
+            0 25px 60px rgba(0, 0, 0, 0.5),
+            inset 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+        50% {
+          box-shadow: 
+            0 0 0 3px rgba(59, 130, 246, 0.6),
+            0 0 40px rgba(59, 130, 246, 0.8),
+            0 0 80px rgba(59, 130, 246, 0.5),
+            0 30px 70px rgba(0, 0, 0, 0.6),
+            inset 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
       }
 
       .benefit-circle-icon::before {
@@ -2187,6 +2466,13 @@
         border-radius: 999px;
         position: relative;
         z-index: 1;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: brightness(1) contrast(1);
+      }
+
+      .benefit-circle:hover .benefit-circle-icon img {
+        transform: scale(1.1);
+        filter: brightness(1.1) contrast(1.05);
       }
 
       .benefit-circle:nth-child(1) .benefit-circle-icon {
@@ -2262,12 +2548,25 @@
       }
 
       .benefit-circle:hover .benefit-circle-icon {
-        transform: scale(1.1) rotate(5deg);
+        transform: scale(1.15) rotate(8deg);
+        border-color: rgba(255, 255, 255, 0.4);
         box-shadow: 
-          0 0 0 1px rgba(59, 130, 246, 0.5),
-          0 0 30px rgba(59, 130, 246, 0.7),
-          0 0 60px rgba(59, 130, 246, 0.4),
-          0 25px 60px rgba(0, 0, 0, 0.5);
+          0 0 0 4px rgba(59, 130, 246, 0.6),
+          0 0 50px rgba(59, 130, 246, 0.9),
+          0 0 100px rgba(59, 130, 246, 0.6),
+          0 0 150px rgba(139, 92, 246, 0.4),
+          0 30px 80px rgba(0, 0, 0, 0.6),
+          inset 0 3px 15px rgba(255, 255, 255, 0.3);
+        animation: iconPulseHover 1.5s ease-in-out infinite;
+      }
+
+      @keyframes iconPulseHover {
+        0%, 100% {
+          transform: scale(1.15) rotate(8deg);
+        }
+        50% {
+          transform: scale(1.18) rotate(10deg);
+        }
       }
 
       .benefit-circle:hover .benefit-circle-icon::before {
@@ -2283,27 +2582,35 @@
       }
 
       .benefit-circle-label {
-        font-weight: 700;
+        font-weight: 800;
         color: #ffffff;
-        font-size: 1.1rem;
-        margin-top: 0.5rem;
-        transition: color 0.3s ease;
+        font-size: 1.15rem;
+        margin-top: 0.75rem;
+        transition: all 0.4s ease;
+        letter-spacing: -0.01em;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
 
       .benefit-circle:hover .benefit-circle-label {
         color: #fbbf24;
+        transform: translateY(-2px);
+        text-shadow: 
+          0 4px 20px rgba(251, 191, 36, 0.5),
+          0 2px 10px rgba(0, 0, 0, 0.4);
       }
 
       .benefit-circle-desc {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         color: #cbd5e1;
-        max-width: 240px;
-        line-height: 1.6;
-        transition: color 0.3s ease;
+        max-width: 280px;
+        line-height: 1.7;
+        transition: all 0.4s ease;
+        font-weight: 400;
       }
 
       .benefit-circle:hover .benefit-circle-desc {
         color: #e2e8f0;
+        transform: translateY(-2px);
       }
 
       @media (max-width: 1024px) {
@@ -3236,7 +3543,7 @@
 
       /* FAQ Section - 2 Column Layout */
       .faq-section {
-        background: radial-gradient(circle at top left, #e0f2fe 0%, #f5f3ff 40%, #fef3f2 100%);
+        background: radial-gradient(circle at top left, #faf5ff 0%, #f3e8ff 40%, #e9d5ff 100%);
         padding: 5rem 0;
         position: relative;
         overflow: hidden;
@@ -3249,7 +3556,7 @@
         left: -10%;
         width: 320px;
         height: 320px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
         filter: blur(2px);
         pointer-events: none;
       }
@@ -3261,7 +3568,7 @@
         right: -5%;
         width: 380px;
         height: 380px;
-        background: radial-gradient(circle, rgba(236, 72, 153, 0.18) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
         filter: blur(2px);
         pointer-events: none;
       }
@@ -4670,6 +4977,10 @@
         background: linear-gradient(180deg, transparent 0%, rgba(20, 184, 166, 0.95) 100%);
       }
 
+      .overlay-dashboard {
+        background: linear-gradient(180deg, transparent 0%, rgba(67, 56, 202, 0.95) 100%);
+      }
+
       .solution-text {
         color: #ffffff;
         font-size: 1.35rem;
@@ -5472,6 +5783,313 @@
         }
       }
 
+      /* Dashboard AI theo từng lĩnh vực Section */
+      .dashboard-industry-section {
+        background: #ffffff;
+        padding: 6rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dashboard-industry-section .section-title {
+        text-align: center;
+        font-size: clamp(2rem, 4.5vw, 2.7rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(120deg, #0f172a 0%, #1e40af 40%, #7c3aed 70%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        padding-top: 1.5rem;
+      }
+
+      .dashboard-industry-section .section-title::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 4px;
+        background: #3b82f6;
+        border-radius: 2px;
+      }
+
+      .dashboard-industry-section .section-subtitle {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #64748b;
+        margin-bottom: 3rem;
+      }
+
+      .dashboard-industry-container {
+        position: relative;
+        max-width: 1800px;
+        margin: 0 auto;
+        min-height: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5rem 2rem;
+      }
+
+      .dashboard-steps-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        flex-wrap: nowrap;
+        padding: 2rem 0;
+      }
+
+      .dashboard-step {
+        position: relative;
+        width: 280px;
+        min-height: 500px;
+        background: transparent;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        z-index: 5;
+        margin: 0 1.5rem;
+      }
+
+      .dashboard-step-icon {
+        width: 160px;
+        height: 160px;
+        margin: 0 0 1.5rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 4px solid var(--dashboard-step-color, #3b82f6);
+      }
+
+      .dashboard-step-icon svg {
+        width: 70px;
+        height: 70px;
+        stroke: #1e293b;
+        fill: none;
+        stroke-width: 2;
+      }
+
+      .dashboard-step h3 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.3;
+      }
+
+      .dashboard-step-subtitle {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--dashboard-step-color, #3b82f6);
+        margin: 0 0 1.5rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .dashboard-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        width: 100%;
+        max-width: 240px;
+      }
+
+      .dashboard-bullets li {
+        font-size: 0.8rem;
+        color: #64748b;
+        line-height: 1.8;
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .dashboard-bullets li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.6rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--dashboard-step-color, #3b82f6);
+      }
+
+      /* Step colors */
+      .dashboard-step-1 {
+        --dashboard-step-color: #ef4444;
+      }
+
+      .dashboard-step-2 {
+        --dashboard-step-color: #fbbf24;
+      }
+
+      .dashboard-step-3 {
+        --dashboard-step-color: #06b6d4;
+      }
+
+      .dashboard-step-4 {
+        --dashboard-step-color: #ef4444;
+      }
+
+      .dashboard-step-5 {
+        --dashboard-step-color: #06b6d4;
+      }
+
+      /* START label */
+      .dashboard-start-label {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 10;
+      }
+
+      .dashboard-start-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #ef4444;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        margin-bottom: 0.5rem;
+      }
+
+      .dashboard-start-text {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #ef4444;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      /* Connecting Arrows */
+      .dashboard-arrows {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .dashboard-arrows svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      @media (max-width: 1400px) {
+        .dashboard-step {
+          width: 220px;
+          margin: 0 1rem;
+        }
+
+        .dashboard-step-icon {
+          width: 140px;
+          height: 140px;
+        }
+
+        .dashboard-step-icon svg {
+          width: 60px;
+          height: 60px;
+        }
+
+        .dashboard-step h3 {
+          font-size: 1.3rem;
+        }
+
+        .dashboard-step-subtitle {
+          font-size: 0.85rem;
+        }
+
+        .dashboard-bullets {
+          max-width: 200px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .dashboard-industry-container {
+          min-height: 500px;
+          padding: 3rem 1rem;
+        }
+
+        .dashboard-steps-wrapper {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 2rem;
+        }
+
+        .dashboard-step {
+          width: 260px;
+          margin: 0;
+        }
+
+        .dashboard-arrows {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .dashboard-industry-section {
+          padding: 4rem 1rem;
+        }
+
+        .dashboard-industry-container {
+          min-height: auto;
+          padding: 2rem 0;
+        }
+
+        .dashboard-steps-wrapper {
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .dashboard-step {
+          width: 280px;
+          margin: 0;
+        }
+
+        .dashboard-step-icon {
+          width: 120px;
+          height: 120px;
+        }
+
+        .dashboard-arrows {
+          display: none;
+        }
+
+        .dashboard-start-label {
+          display: none;
+        }
+      }
+
       /* Footer */
       .lv-footer {
         background: #ffffff;
@@ -5671,6 +6289,14 @@
               Sản phẩm
               <span class="dropdown-icon">▼</span>
             </a>
+            <ul class="dropdown-menu">
+              <li><a href="#surehcs-hrm">AI SureHCS HRM</a></li>
+              <li><a href="#accnet-erp">AI Accnet ERP</a></li>
+              <li><a href="#codx-collaboration">AI CoDX Collaboration</a></li>
+              <li><a href="#suckhoe247-medical">AI SUCKHOE247 Medical</a></li>
+              <li><a href="dashboard.html">AI Financial Agent</a></li>
+              <li><a href="#lv-chatbot">AI LV Chatbot</a></li>
+            </ul>
           </li>
           <li>
             <a href="#dich-vu">
@@ -5890,7 +6516,7 @@
                   </li>
                 </ul>
                 <div class="benefits-hero-cta">
-                  <button class="btn">Xem giải pháp AI cho doanh nghiệp →</button>
+                  <button class="btn"><span>Xem giải pháp AI cho doanh nghiệp →</span></button>
                   <span class="benefits-hero-note">Triển khai thử nghiệm nhanh từ 4–6 tuần.</span>
                 </div>
               </div>
@@ -5995,6 +6621,15 @@
                 </div>
               </div>
 
+              <div class="solution-card" data-industry="dashboard">
+                <div class="solution-image">
+                  <img src="Dashboard.png" alt="Dashboard" class="solution-card-image" />
+                </div>
+                <div class="solution-overlay overlay-dashboard">
+                  <span class="solution-text">Dashboard</span>
+                </div>
+              </div>
+
               <!-- Duplicate for seamless loop -->
               <div class="solution-card" data-industry="office">
                 <div class="solution-image">
@@ -6038,6 +6673,15 @@
                 </div>
                 <div class="solution-overlay overlay-orange">
                   <span class="solution-text">Du lịch</span>
+                </div>
+              </div>
+
+              <div class="solution-card" data-industry="dashboard">
+                <div class="solution-image">
+                  <img src="Dashboard.png" alt="Dashboard" class="solution-card-image" />
+                </div>
+                <div class="solution-overlay overlay-dashboard">
+                  <span class="solution-text">Dashboard</span>
                 </div>
               </div>
             </div>
@@ -6443,7 +7087,9 @@
           </div>
         </div>
       </section>
-    </main>
+
+      <!-- Dashboard AI theo từng lĩnh vực Section -->
+     
 
     <footer class="lv-footer">
       <div class="footer-top">
@@ -6591,7 +7237,7 @@
     </script>
   </body>
 </html>
-            { name: "Phát hiện gian lận thời gian thực", desc: "AI phân tích giao dịch bất thường, cảnh báo ngay lập tức" },
+            <!-- { name: "Phát hiện gian lận thời gian thực", desc: "AI phân tích giao dịch bất thường, cảnh báo ngay lập tức" },
             { name: "Đánh giá rủi ro tín dụng", desc: "Phân tích dữ liệu khách hàng, dự đoán khả năng trả nợ" },
             { name: "Tự động hóa quy trình cho vay", desc: "Xử lý hồ sơ, duyệt khoản vay nhanh chóng, chính xác" }
           ],
@@ -6867,7 +7513,7 @@
             item.classList.add('active');
           }
         });
-      });
+      }); -->
 
     </script>
   </body>
